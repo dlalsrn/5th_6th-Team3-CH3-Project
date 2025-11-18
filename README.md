@@ -74,7 +74,7 @@
 
 ## 트러블 슈팅
 - **Character의 God Object Issue (이민구)**
-  
+  <details> <summary><strong>클릭하여 펼치기</strong></summary>
   첫 번째는 Character 클래스 내부에서 이동, 공격, 회피 등 모든 로직을 직접 처리하면서 상태별로 다른 동작을 제어하기 위해 다수의 조건문이 중첩된 상황이었는데, 이로 인해 코드 가독성이 저하되고, 유지보수가 어려운 구조였습니다.
   
   또한, 모든 상태 로직이 단일 클래스에 집중되어 있어 상태 전이를 유연하게 제어하기 어렵고, 새로운 동작을 추가할 때 기존 분기 로직을 수정해야해서 버그가 생길 가능성이 증가했습니다.
@@ -88,9 +88,10 @@
   또한, 상태 추가 시 새로운 클래스만 추가하면 되기에 기존 코드에 미치는 영향을 최소화 할 수 있었습니다.
     
   <img width="704" height="366" alt="image" src="https://github.com/user-attachments/assets/052fb535-1edd-4949-90fa-b558f6106aa5" />
-    
+  </details>
+
 - **Character Stat 관리 문제 (이민구)**
-    
+  <details> <summary><strong>클릭하여 펼치기</strong></summary>
   Character가 Health, Mana, Stamina 총 3개의 Stat을 가지고 있는데, 각 Stat 별로 필요한 변수와 함수를 선언하면 관리가 복잡하고 유지보수가 좋지 않았습니다.
     
   이를 해결하기 위해 Stat Struct를 만들고, Struct 내부에서 값 처리, 무결성 검사를 처리하도록 설계했습니다.
@@ -102,17 +103,19 @@
   <img width="608" height="576" alt="image" src="https://github.com/user-attachments/assets/e93bcc8f-001d-4b0a-a302-440a3d728924" />
 
   <img width="737" height="285" alt="image" src="https://github.com/user-attachments/assets/7528545d-ac70-4900-b95b-64e9849befcc" />
+  </details>
 
 - **Enemy의 Player 인식 문제 (박동엽)**
-    
+  <details> <summary><strong>클릭하여 펼치기</strong></summary>
   첫 번째는 AttackState중 캐릭터가 구르기를 통해 순간적으로 시야에 사라졌을때 공격 사거리내에는 있지만 플레이어를 못찾아 적이 멈추는 문제가 발생했습니다.
 
   <img width="527" height="301" alt="image" src="https://github.com/user-attachments/assets/d0721853-29d2-47a3-bfe2-f416b7bc9a74" />
 
   이는 Hit, Chase, Attack과 같은 전투 상황에서는 시야의 범위를 360도로 올려 플레이어를 잃어버리지 않도록 하여 해결했습니다.
+  </details>
     
 - **Enemy 연속 Hit State 전환 문제 (박동엽)**
-    
+  <details> <summary><strong>클릭하여 펼치기</strong></summary>
   적에게 데미지를 연속적으로 줄 때, Hit State에서 Hit State로 전환이 되지 않아 피격 중임에도 Hit 애니메이션 재생 후 바로 Attack State가 되는 문제가 발생했습니다.
     
   일반 몬스터의 경우는 HitState에서 조건을 충족한다면 바로 Hit State로 상태 전환을 할 수 있게 하여 연속적인 피격이 가능하도록 했습니다.
@@ -124,19 +127,22 @@
   <img width="768" height="408" alt="image" src="https://github.com/user-attachments/assets/37873853-5c46-4cdf-9e93-edf5cf8cc7e5" />
     
   <img width="907" height="171" alt="image" src="https://github.com/user-attachments/assets/dd49d1b4-4eda-430d-815d-a0ad09df6d65" />
+  </details>
     
 - **Enemy Count 문제 (강민용)**
-    
+  <details> <summary><strong>클릭하여 펼치기</strong></summary>
   StartGame 함수가 너무 빨리 호출이 되어 적의 수를 인식하지 못하는 현상이 발생했습니다.
     
   이를 해결하기 위해 로직 간 호출 순서를 변경하여 적 스폰, 적 카운트, UI 반영이 가능하도록 했습니다.
+  </details>
     
 - **게임의 승/패 구분 문제 (강민용)**
-    
+  <details> <summary><strong>클릭하여 펼치기</strong></summary>
   UI와 연동할 때, 클리어와 패배를 구분하기 어렵다는 피드백을 받아 EndGame 함수에 Bool 인자를 추가하여 게임의 승리/패배를 명확히 알 수 있도록 했습니다.
+  </details>
     
 - **월드 위치 → 스크린 좌표 전환 문제 (변철우)**
-    
+  <details> <summary><strong>클릭하여 펼치기</strong></summary>
   월드 위치를 스크린 좌표로 투영한 좌표가 맞지않는 문제가 발생 했었습니다.
   
   투영 시 사용한 ProjectWorldLocationToScreen()은 화면 해상도 기준 픽셀 좌표를 반환하는데, 좌표를 적용해야하는 Widget은 디자인 해상도 기준이라 두 해상도가 동일하지 않은 경우 의도와 다른 결과가 나오게 되었습니다.
@@ -146,14 +152,16 @@
   해결방법은 UWidgetLayoutLibrary::GetViewportScale()로 현재 해상도와 디자인해상도의 스케일 비율을 구해 투영 좌표를 보정해 해결했습니다.
 
   <img width="988" height="262" alt="image" src="https://github.com/user-attachments/assets/9b57b019-7005-4f63-bc01-ded7e7d16222" />
+  </details>
     
 - **GameInstanceSubsystem와 Actor의 초기화 시점 문제 (변철우)**
-    
+  <details> <summary><strong>클릭하여 펼치기</strong></summary>
   UI전용 GameInstanceSubsystem 생성자에서 플레이어, 몬스터에 접근해 함수 바인딩 시, 바인딩이 안되는 문제입니다.
   
   이유는 GameInstanceSubsystem 생성 시점이 월드 생성보다 빠르기 때문에 아직 생성되지 않은 플레이어, 몬스터에 접근했기 때문이였습니다.
     
   따라서, 월드에 액터 생성이 완료된 시점에 바인딩을 진행하여 해결했습니다.
+  </details>
 
 ## 빌드/실행 방법
 1. **사전 준비**
