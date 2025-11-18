@@ -12,7 +12,7 @@
     - **팀원:** 변철우 (UI 담당)
     - **팀원:** 이효정 (Weapon 담당)
     - **팀원:** 유수정 (Level Design 담당)
-- **링크: [[시연 영상]](https://www.youtube.com/watch?v=k__b-ZPu13c) [[실행파일 다운로드]](https://drive.google.com/drive/u/0/folders/1r1uNTZJByor4QbLImFfkaQVEcmG-D7wB)**
+- **링크: [[시연 영상]](https://www.youtube.com/watch?v=k__b-ZPu13c) [[실행파일 다운로드]](https://drive.google.com/file/d/1cINo-GBNU52_PRzVQAOQ8--zELHALrgY/view?usp=sharing)**
 <br></br>
 
 ## 프로젝트 목표
